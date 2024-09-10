@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+  {% include "partials/_categories.html" %}
+
+    <div class="col-md-10">
+      <form action="{% url "search" %}" class="d-flex">
+        <input class="form-control me-1" type="text" name="q" placeholder="Anahtar Kelime">
+        <button class="btn btn-secondary" type="submit">Arama</button>
+    </form>
+     
+    {% if posts|length == 0 %}
+    <div class="alert alert-warning">Sonuç Bulunamadı.</div> 
+    {% endif %}
+
+    {% include "partials/_post-list.html" %}
+    
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block title %} |Blog {% endblock title %}
+

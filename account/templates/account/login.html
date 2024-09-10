@@ -1,0 +1,45 @@
+{%extends 'layout.html' %}
+{% load static %}
+
+{% block js_files %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <h1>Login</h1>
+            <hr>
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                
+               {% include "partials/_form.html" %}
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                </div>
+            </form>
+        
+        </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<!-- -->
+{% block title %}
+
+    Giriş Yap
+
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'courses/css/style.css'%}">
+{% endblock %}
+
+

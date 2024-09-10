@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+   <div class="row">
+    <div class="col-md-10 mx-auto">
+      <div class="card mb-3">
+        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <p class="card-text">
+            <small class="text-muted">Yayınlanma Tarihi: {{ post.publish_date }} | Güncelleme Tarihi: {{ post.updated_date }}</small>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Kategoriler</h5>
+          <div class="badge-group">
+            {% for category in post.categories.all %}
+              <span class="badge bg-primary">{{ category.name }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Etiketler</h5>
+          <div class="badge-group">
+            {% for tag in post.tag.all %}
+              <span class="badge bg-secondary">{{ tag.name }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="col-md-10">
+          <p>{{ post.body }}</p>
+        
+        {% include 'partials/_comments.html' with comments=comments comment_form=comment_form %}
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% if posts %}
+<!-- İlk içerik -->
+<div class="col-md-12 mb-4">
+  <div class="card">
+    <img src="{{ posts.0.image.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ posts.0.title }}</h5>
+      <p class="card-text">{{ posts.0.mini_content }}</p>
+      <p class="card-text">Yayınlanma Tarihi: {{ posts.0.publish_date }}</p>
+      <a href="{% url 'post_detail' posts.0.slug %}" class="btn btn-primary">Devamını Oku</a>
+                
+    </div>
+  </div>
+</div>
+<!-- Diğer içerikler -->
+<div class="row">
+  {% for post in posts %}
+    {% if forloop.counter > 1 %}
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.mini_content }}</p>
+            <p class="card-text">Yayınlanma Tarihi: {{ post.publish_date }}</p>
+            <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Devamını Oku</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}

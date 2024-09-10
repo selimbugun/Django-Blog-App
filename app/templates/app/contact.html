@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-md-6">
+      <h1 class="text-center mb-5">İletişime geçin</h1>
+      <form method="POST" novalidate enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% for error in field.errors %}
+              <div class="alert alert-danger">
+                {{ error }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+        <br>
+        <button class="btn btn-primary" type="submit">Gönder</button>
+      </form>
+    </div>
+  </div>
+
+ 
+
+{% endblock content %}
+
+{% block title %} |İletişim {% endblock title %}
+
+
+
+
+
+
+

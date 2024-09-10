@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <div class="row">
+      <div class="col-md-2">
+          <div class="social-media text-center mb-2">
+          Sosyal Medya  
+          <a href="https://www.linkedin.com/in/selimbugun"><i class="fab fa-linkedin-in"></i></a>&nbsp;
+          <a href="https://github.com/selimbugun"><i class="fab fa-github"></i></a>
+      </div>
+
+      <ul class="nav flex-column nav-pills">
+          <li class="nav-item categories-li">
+              <a class="nav-link categories-a" href="/blog">Tüm Kategoriler</a>
+          </li>
+          {% for category in categories %}
+          <li class="nav-item">
+              <a class="nav-link {% if chosen_category == category.slug %}active{% endif %}" href="{% url "posts_by_category" category.slug %}">{{ category.name }}</a>
+          </li>
+          {% endfor %}
+      </ul>
+  </div>

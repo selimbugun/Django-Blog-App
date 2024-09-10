@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+{% block content %}
+<header class="container mt-5">
+  <div class="row align-items-center">
+    <div class="col-md-4">
+      <img src="{% static 'app/img/photo.webp' %}" alt="your photo" class="img-thumbnail rounded-circle">
+    </div>
+    <div class="col-md-8">
+      <h1>Merhaba, Ben Selim Bugün!</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec massa tellus.
+        Vestibulum vitae rutrum quam, eget gravida odio. Duis faucibus eros euismod diam cursus, eu ultricies lorem aliquet.
+        Curabitur vitae neque enim. Cras hendrerit urna sed diam mattis, vitae elementum orci convallis.
+        Suspendisse sed convallis purus. Donec non ex sit amet nulla tincidunt pretium eu in nunc.
+        Curabitur nec lectus risus. Phasellus non urna enim. Donec vel magna sagittis, ultricies ipsum ac,
+        porttitor arcu. Aenean eu ultricies risus. Cras molestie, sapien vitae pretium euismod, risus lacus accumsan sem,
+        vel rhoncus sapien urna ut neque. Fusce venenatis scelerisque leo, non feugiat mauris tincidunt eget.
+        Donec lacinia ante nulla, interdum varius justo tempus et. Nulla tellus eros, efficitur at mauris ut,
+        sodales elementum quam. Vestibulum vel tortor faucibus, vehicula tortor quis, porta nulla.
+      </p>
+      <a href="{% url "contact" %}" class="btn btn-primary">İletişim Kurun</a>
+      <a href="{% url "about" %}" class="btn btn-primary">Hakkımda</a>
+    </div>
+  </div>
+</header>
+
+<section class="container mt-5">
+  <h2>Yeteneklerim</h2>
+  <div class="row">
+    <div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar bg-danger" style="width: 90%">Django</div>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar bg-info" style="width: 50%">Mysql, PostgreSQL, SQLite</div>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar bg-warning" style="width: 75%">Python</div>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar bg-success" style="width: 50%">HTML&CSS&BOOTSTRAP</div>
+    </div>
+  </div>
+</section>
+
+<section class="container mt-5">
+  <h2>Projelerim</h2>
+  <div class="row">
+      {% for p in projects %}
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.title }} görseli">
+          <div class="card-body">
+            <h5 class="card-title">{{ p.title }}</h5>
+            <p class="card-text">{{ p.mini_description }}</p>
+            <a href="{% url "project_detail" p.slug %}" class="btn btn-primary">Daha Fazla Detay</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</section>
+          
+
+
+{% endblock content %}

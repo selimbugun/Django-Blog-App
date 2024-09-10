@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Hesap Bilgilerim</h2>
+
+            <p><strong>Kullanıcı Adı:</strong> {{ username }}</p>
+            <p><strong>Adı:</strong> {{ first_name }}</p>
+            <p><strong>Soyadı:</strong> {{ last_name }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Kayıt Tarihi:</strong> {{ joined_date }}</p>
+            <a href="{% url 'update_info' %}" class="btn btn-primary">Bilgileri Güncelle</a>
+            <a href="{% url 'change_password' %}" class="btn btn-primary">Şifreyi Değiştir</a>
+
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block title %}
+    Hesabım
+{% endblock %}
