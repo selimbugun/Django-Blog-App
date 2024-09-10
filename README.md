@@ -19,7 +19,7 @@ To run this project on your local machine, follow these steps:
 
 ```bash
 git clone https://github.com/selimbugun/Django-Blog-App.git
-cd blog-project
+cd blog
 ```
 
 ### 2. Create and Activate a Virtual Environment
